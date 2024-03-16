@@ -1,0 +1,7 @@
+- depedencies : 
+# "nodemailer": "^6.9.10"
+# "dotenv": "^16.4.5"
+
+- In `.env` file, you will find the mail configuration
+EMAIL_SENDER : email address of the sender - you have to enable your email to send emails 
+APP_PASSWORD : you have to generate one via google account security (12 digit)
