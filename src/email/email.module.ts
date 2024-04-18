@@ -10,6 +10,16 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 @Module({
   imports: [
     ConfigModule, // Import ConfigModule here
+    // MailerModule.forRoot({
+    //   transport: {
+    //     host: 'smtp.gmail.com',
+    //     port: 587,
+    //     auth: {
+    //       user: process.env.EMAIL_USERNAME,
+    //       pass: process.env.APP_PASSWORD,
+    //     },
+    //   },
+    // }),
     MailerModule.forRootAsync({
       inject: [ConfigService], // Inject ConfigService
       useFactory: async (configService: ConfigService) => {
@@ -34,7 +44,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     })
   ],
   controllers: [EmailController],
-  providers: [EmailService],
+  providers: [EmailService, ConfigService],
 
 })
 export class EmailModule {}

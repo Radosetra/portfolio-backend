@@ -5,9 +5,13 @@ import { FeedbackController } from './feedback/feedback.controller';
 import { FeedbackService } from './feedback/feedback.service';
 import { PrismaService } from 'prisma/prisma.service';
 import { EmailModule } from './email/email.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [EmailModule],
+  imports: [
+    EmailModule,
+    ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
+  ],
   controllers: [AppController, FeedbackController],
   providers: [AppService, FeedbackService, PrismaService],
 })
